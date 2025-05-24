@@ -34,6 +34,17 @@ const CanvasBoard = () => {
     };
   }, []);
 
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const handleClear = () => {
+    clearCanvas();
+    socket.emit("clear"); // emit to others
+  };
+
   const handleMouseDown = (e) => {
     if (mode !== "drawing") return;
     setIsDrawing(true);
@@ -80,6 +91,9 @@ const CanvasBoard = () => {
           🎨 Drawing
         </button>
         <button onClick={() => setMode("text")}>📝 Text</button>
+        <button onClick={handleClear} className="clear-btn">
+          🧹 Clear
+        </button>
       </div>
 
       <div

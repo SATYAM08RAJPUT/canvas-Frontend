@@ -78,3 +78,6 @@ textarea {
   border-radius: 8px;
   box-sizing: border-box;
 }
+.clear-btn{
+    margin-left: 10px;
+}
